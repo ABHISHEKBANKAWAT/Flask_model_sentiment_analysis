@@ -18,9 +18,9 @@ pipeline {
             steps {
                 script {
                     // Check for the virtual environment, create it if it doesn't exist
-                    sh 'bash -c "python3 -m venv $VENV_PATH"'
+                    sh 'bash -c "python3 -m venv $VIRTUAL_ENV_DIR"'
                     // Activate the virtual environment
-                    sh 'bash -c "source $VENV_PATH/bin/activate"'
+                    sh 'bash -c "source $VIRTUAL_ENV_DIR/bin/activate"'
                 }
             }
         }
@@ -29,7 +29,7 @@ pipeline {
             steps {
                  steps {
                 // Install any dependencies listed in requirements.txt
-                sh 'bash -c "source $VENV_PATH/bin/activate && pip install -r requirements.txt"'
+                sh 'bash -c "source $VIRTUAL_ENV_DIR/bin/activate && pip install -r requirements.txt"'
               }
             }
         }
